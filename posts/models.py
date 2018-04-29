@@ -3,13 +3,16 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from tinymce.models import HTMLField
-
+from validator import FileValidator
 # Create your models here.
+
+
+validate_file = FileValidator(max_size=10* 1024 * 100)
 
 class post(models.Model):
     title=models.CharField(max_length=150)
     description=HTMLField()
-    featured_image=models.FileField(upload_to="images",blank=True)
+    featured_image=models.FileField(upload_to="images",blank=True, validators=[validate_file])
     published=models.DateTimeField(auto_now=False,auto_now_add=True)
     author = models.ForeignKey(User)
 

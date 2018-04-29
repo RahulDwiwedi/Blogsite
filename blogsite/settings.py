@@ -124,3 +124,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'posts/static/')
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'posts/media/')
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 100

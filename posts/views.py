@@ -152,7 +152,7 @@ def post_delete(request,id=None):
         
         instance.delete()
         context={"msg":"post successfully deleted"}
-        return render(request, 'dashboard.html',context)
+        return HttpResponseRedirect('/dashboard')
     else:
         context={"msg":"You are not allowed to perform this action","show":"alert-danger"}
         return render(request, 'dashboard.html',context)
