@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{%block head_title%}Single Post{%endblock head_title%}
+  {%block content%}
+
+<div class="container">
+
+        <div class="row">
+            <div class="col-12 p_con">
+				  <img class="profile_image"src=" {{author.profile.image.url}}" alt="Avatar" style="height:300px">
+				<div class="profile_card">
+					<div class="profile_container">
+						<h4>{{author.first_name}} {{author.last_name}}</h4> 
+						<div class="card-header">
+							<a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+							  Contact
+							</a>
+						  </div>
+						  <div id="collapseOne" class="collapse">
+							<div class="card-block">
+							  <p><b>Email : </b>{{author.email}}</br><b>Mobile No. :</b>{{author.profile.mobile}}</p>
+							</div>
+						  </div>
+						
+				
+						<div class="card-header">
+							<a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+							  Know More
+							</a>
+						  </div>
+						  <div id="collapseTwo" class="collapse">
+							<div class="card-block">
+							  <p>{{author.profile.bio | safe}}</p>
+							</div>
+						  </div>
+		</div>
+</div></div>
+</div></div>
+{%endblock content%}

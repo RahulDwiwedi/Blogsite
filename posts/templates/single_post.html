@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+
+{% block extra_head %}
+    <meta property="og:url" content="http://127.0.0.1:8000/post/{{post.id}}">
+<meta property="og:image" content="{{post.featured_image.url}}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{post.title}}">
+{% endblock extra_head%}
+
+{%block head_title%}{{post.title}}{%endblock head_title%}
+
+  {%block content%}
+  
+  
+
+<div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- the actual blog post: title/author/date/content -->
+                <h1>{{post.title}}</h1>
+                <span><p class="lead"><i class="fa fa-user"></i> By <a href="/user/{{post.author.id}}">{{post.author.first_name}} {{post.author.last_name}}</a><b> </b> <i class="fa fa-calendar"></i> Posted on {{post.published}}</p>
+				</span><span class="social_share">
+					<a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/post/{{post.id}}" class="fa fa-facebook"></a>
+					<a href="https://twitter.com/intent/tweet?url=http://127.0.0.1:8000/post/{{post.id}}&text={{post.title}}" class="fa fa-twitter"></a>
+					<a href="https://www.linkedin.com/shareArticle?url=http://127.0.0.1:8000/post/{{post.id}}&title={{post.title}}" class="fa fa-linkedin"></a>
+					<a href="https://www.blogger.com/blog-this.g?u=http://127.0.0.1:8000/post/{{post.id}}&n={{post.title}}" class="fa fa-rss"></a>
+      
+				</span>
+				<hr>
+                <img src="{{post.featured_image.url}}" width=100% class="img-responsive">
+                <hr>
+                <p class="lead">{{post.description|safe|linebreaks}}</p>
+                <br/>
+			</div>
+		</div>
+</div>
+{%endblock content%}

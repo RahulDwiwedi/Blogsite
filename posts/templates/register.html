@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({
+  selector: 'textarea',
+  height: 500,
+  theme: 'modern',
+  plugins: "code preview",
+
+  toolbar1: 'code | formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+  
+ });</script>
+<style>
+
+
+span.helptext {
+    display: none;
+}
+
+input[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+
+form {
+    width: 60%;
+    margin-left: 20%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+}
+
+input#id_image {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
+}
+
+label {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 8px;
+    display: inline-block;
+}
+
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+	margin-bottom: 1px;
+}
+
+h2 {
+    margin: 0px;
+    margin-top: -15px;
+    text-align: center;
+}
+
+.container {
+	margin-top: -15px;
+    padding: 16px;
+	padding-bottom: 0px;
+}
+
+.contain {
+    padding: 16px;
+
+}
+
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 5px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.err_msg {
+	color:red;
+    width: 29%;
+    float: left;
+    margin-top: 10%;
+	margin: 120px 0px 0px 7px;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+}
+
+</style></head>
+<body>
+<h3>{{msg}}</h3>
+{%if err or err2%}
+<div class="err_msg">
+<h4>{{err}}</h4>
+<h4>{{err2}}</h4>
+</div>
+{%endif%}
+<form class="form_large" enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+<div class="container">
+
+<h2>{{form_title}}</h2>
+{{form}}
+{{form2}}
+{%if request.user.id == None %}
+<input type="submit" value="Register"></input>
+{%else%}
+<input type="submit" value="Submit"></input>
+{%endif%}
+</div>
+
+{%if request.user.id == None %}
+  <div class="contain" style="background-color:#f1f1f1">
+    <span class="psw">Already Registered? <a href="/login">login</a></span>
+  </div>
+  {%endif%}
+  
+</form>
+
+</body>
+</html>
+  
